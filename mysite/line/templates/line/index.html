@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Write your text</title>
+</head>
+<body>
+<form action="{% url 'line:index' %}" method="get">
+    <label for="text">Введите текст:</label>
+    <input type="text" id="text" name="text"><br><br>
+<input type="submit" value="отправить">
+</form>
+    <h3>Последение запросы:</h3>
+    {% if latest_text_list %}
+        <ul>
+        {% for linetext in latest_text_list %}
+            <li>{{ linetext.line_text }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No polls are available.</p>
+    {% endif %}
+</body>
+</html>
